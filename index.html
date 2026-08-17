@@ -1,133 +1,1272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>João Gabriel Hermida Martins — Desenvolvedor Web</title>
-    <meta
-      name="description"
-      content="Portfólio de João Gabriel Hermida Martins, desenvolvedor web em formação, com projetos em HTML5, CSS3 e JavaScript."
-    />
-    <meta name="color-scheme" content="light dark" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="//use.fontawesome.com/releases/v6.7.2/css/all.css"
-    />
+  <title>João Gabriel Hermida Martins — Desenvolvedor Web</title>
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <meta
+    name="description"
+    content="Portfólio de João Gabriel Hermida Martins, desenvolvedor web em formação, com projetos em HTML5, CSS3 e JavaScript."
+  />
 
-    <header class="site-header">
-      <div class="wrap header-inner">
-        <a class="logo" href="#topo" aria-label="Voltar ao topo">
-          <span class="logo-bracket">&lt;</span>jg<span class="logo-bracket"
-            >/&gt;</span
-          >
-        </a>
+  <meta name="color-scheme" content="light dark" />
 
-        <nav class="site-nav" aria-label="Navegação principal">
-          <ul id="nav-list">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
-        </nav>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <div class="header-actions">
-          <button
-            id="theme-toggle"
-            class="icon-button"
-            type="button"
-            aria-label="Ativar modo escuro"
-            aria-pressed="false"
-          >
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          </button>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-          <button
-            id="nav-toggle"
-            class="icon-button nav-toggle"
-            type="button"
-            aria-label="Abrir menu de navegação"
-            aria-expanded="false"
-            aria-controls="nav-list"
-          >
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-          </button>
-        </div>
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
+  />
+
+  <!-- ==========================================================
+       CSS
+       ========================================================== -->
+  <style>
+    /* ========================================================================
+       Tokens
+       ======================================================================== */
+
+    :root {
+      --font-display: "JetBrains Mono", "Courier New", monospace;
+      --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      --bg: #f6f7fa;
+      --surface: #ffffff;
+      --surface-2: #eef0f4;
+
+      --text: #14171c;
+      --text-muted: #5b6472;
+
+      --border: #e2e5ea;
+
+      --accent: #2f5cff;
+      --accent-contrast: #ffffff;
+      --accent-soft: #eaf0ff;
+
+      --ok: #1a9b6c;
+      --ok-soft: #e5f7ef;
+
+      --shadow:
+        0 1px 2px rgba(20, 23, 28, 0.04),
+        0 8px 24px rgba(20, 23, 28, 0.06);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --transition-fast: 150ms ease;
+      --transition-theme: 250ms ease;
+
+      color-scheme: light;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0d1117;
+      --surface: #151a21;
+      --surface-2: #1b212a;
+
+      --text: #e6e9ef;
+      --text-muted: #8b93a1;
+
+      --border: #262c36;
+
+      --accent: #7ea1ff;
+      --accent-contrast: #0d1117;
+      --accent-soft: rgba(126, 161, 255, 0.12);
+
+      --ok: #35d399;
+      --ok-soft: rgba(53, 211, 153, 0.12);
+
+      --shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+
+      color-scheme: dark;
+    }
+
+    /* ========================================================================
+       Reset & base
+       ======================================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+
+      transition:
+        background-color var(--transition-theme),
+        color var(--transition-theme);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 0.5em;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw + 1rem, 3.6rem);
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2.5vw + 1rem, 2.2rem);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0 0 1em;
+      color: var(--text-muted);
+    }
+
+    .wrap {
+      width: min(1100px, 100% - 2.5rem);
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+
+      background: var(--accent);
+      color: var(--accent-contrast);
+
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+
+      transition: top var(--transition-fast);
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ========================================================================
+       Decorative code labels
+       ======================================================================== */
+
+    .tag-label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--accent);
+      opacity: 0.75;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .tag-label-close {
+      margin-top: 2.5rem;
+      margin-bottom: 0;
+    }
+
+    .section-intro {
+      max-width: 56ch;
+      font-size: 1rem;
+    }
+
+    .section-intro-tight {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    /* ========================================================================
+       Header
+       ======================================================================== */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .logo-bracket {
+      color: var(--accent);
+    }
+
+    .site-nav ul {
+      display: flex;
+      gap: 1.75rem;
+    }
+
+    .site-nav a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 2.4rem;
+      height: 2.4rem;
+
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+
+      cursor: pointer;
+
+      transition:
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .icon-button:hover {
+      border-color: var(--accent);
+    }
+
+    .icon-button:active {
+      transform: scale(0.94);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    /* ========================================================================
+       Buttons
+       ======================================================================== */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+
+      padding: 0.75rem 1.4rem;
+
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+
+      cursor: pointer;
+
+      transition:
+        transform var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-contrast);
+    }
+
+    .btn-primary:hover {
+      background: color-mix(in srgb, var(--accent) 88%, black);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+
+      font-size: 0.9rem;
+      padding: 0.6rem 1.1rem;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ========================================================================
+       Hero
+       ======================================================================== */
+
+    .hero {
+      padding: clamp(3rem, 8vw, 6rem) 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-role {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-family: var(--font-display);
+      color: var(--accent);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-role-caret {
+      opacity: 0.7;
+    }
+
+    .hero-desc {
+      max-width: 46ch;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-meta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+
+      transition: color var(--transition-fast);
+    }
+
+    .hero-meta a:hover {
+      color: var(--accent);
+    }
+
+    .code-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .code-card-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      padding: 0.7rem 1rem;
+
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #ff5f56;
+    }
+
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+
+    .dot-green {
+      background: #27c93f;
+    }
+
+    .code-card-title {
+      margin-left: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .code-card-body {
+      margin: 0;
+      padding: 1.25rem 1.4rem;
+
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      line-height: 1.7;
+
+      overflow-x: auto;
+    }
+
+    .tok-kw {
+      color: #c678dd;
+    }
+
+    .tok-var {
+      color: var(--text);
+    }
+
+    .tok-key {
+      color: var(--accent);
+    }
+
+    .tok-str {
+      color: #2fa876;
+    }
+
+    .tok-bool {
+      color: #e0a13f;
+    }
+
+    /* ========================================================================
+       Sections
+       ======================================================================== */
+
+    .section {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+      border-block: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 68ch;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+    }
+
+    /* ========================================================================
+       Skills
+       ======================================================================== */
+
+    .skills-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skills-group-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      transition:
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .section-alt .skill-card {
+      background: var(--bg);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .skill-card i {
+      font-size: 1.35rem;
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    .skill-html i {
+      color: #e34f26;
+    }
+
+    .skill-css i {
+      color: #1572b6;
+    }
+
+    .skill-js i {
+      color: #d3ae00;
+    }
+
+    [data-theme="dark"] .skill-js i {
+      color: #f7df1e;
+    }
+
+    .skill-csharp i,
+    .skill-java i,
+    .skill-python i,
+    .skill-sqlite i,
+    .skill-mysql i {
+      color: var(--accent);
+    }
+
+    .skill-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .skill-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+
+      margin-top: 0.25rem;
+    }
+
+    .skill-level-bar {
+      position: relative;
+
+      width: 3.25rem;
+      height: 5px;
+
+      border-radius: 999px;
+      background: var(--surface-2);
+
+      overflow: hidden;
+    }
+
+    .skill-level-bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--accent);
+    }
+
+    .skill-level-mid .skill-level-bar::after {
+      right: 40%;
+    }
+
+    .skill-level-high .skill-level-bar::after {
+      right: 10%;
+    }
+
+    /* ========================================================================
+       Projects
+       ======================================================================== */
+
+    .projects-subtitle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+
+      margin: 2rem 0 0.5rem;
+    }
+
+    .projects-subtitle:first-of-type {
+      margin-top: 1.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+
+      display: flex;
+      flex-direction: column;
+
+      transition: transform var(--transition-fast);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-card-top {
+      width: 3rem;
+      height: 3rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 1.3rem;
+
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 1.4rem;
+    }
+
+    .project-tags li {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .project-card .btn-outline {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* ========================================================================
+       GitHub showcase
+       ======================================================================== */
+
+    .github-showcase {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .github-showcase-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .github-showcase-head .projects-subtitle {
+      margin: 0 0 0.35rem;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .repo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+      overflow: hidden;
+
+      transition:
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .repo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent 80%);
+    }
+
+    .repo-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .repo-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .repo-icon {
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    .repo-badge {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .repo-name {
+      margin-bottom: 0.5rem;
+    }
+
+    .repo-desc {
+      font-size: 0.92rem;
+      min-height: 2.6em;
+    }
+
+    .repo-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+
+      margin: 0.25rem 0 1.4rem;
+    }
+
+    .repo-stats li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .repo-lang {
+      gap: 0.4rem;
+    }
+
+    .repo-lang-dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .repo-updated {
+      margin-left: auto;
+    }
+
+    .repo-card .btn-outline {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .repo-card.is-loading .repo-stats,
+    .repo-card.is-loading .repo-desc {
+      opacity: 0.55;
+    }
+
+    /* ========================================================================
+       Contact
+       ======================================================================== */
+
+    .contact-intro {
+      max-width: 56ch;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+
+      transition:
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .section-alt .contact-card {
+      background: var(--surface);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .contact-card i {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* ========================================================================
+       Footer
+       ======================================================================== */
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      order: 2;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-tag {
+      font-family: var(--font-display);
+      order: 3;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: 620px) {
+      .footer-tag {
+        width: auto;
+        text-align: right;
+        order: 2;
+        margin-left: auto;
+      }
+
+      .footer-links {
+        order: 3;
+      }
+    }
+
+    /* ========================================================================
+       Scroll reveal
+       ======================================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+
+      transition:
+        opacity 500ms ease,
+        transform 500ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================================================
+       Responsive
+       ======================================================================== */
+
+    @media (max-width: 980px) {
+      .skills-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .skills-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height var(--transition-theme);
+      }
+
+      .site-nav.is-open {
+        max-height: 20rem;
+      }
+
+      .site-nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+      }
+
+      .site-nav a {
+        display: block;
+        padding: 0.9rem 1.25rem;
+      }
+
+      .github-showcase-head {
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    /* ========================================================================
+       Reduced motion
+       ======================================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+  <!-- ==========================================================
+       HEADER
+       ========================================================== -->
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+
+      <a class="logo" href="#topo" aria-label="Voltar ao topo">
+        <span class="logo-bracket">&lt;</span>jg<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <ul id="nav-list">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+
+        <button
+          id="theme-toggle"
+          class="icon-button"
+          type="button"
+          aria-label="Ativar modo escuro"
+          aria-pressed="false"
+        >
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+
+        <button
+          id="nav-toggle"
+          class="icon-button nav-toggle"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="nav-list"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main id="conteudo">
-      <section id="topo" class="hero">
-        <div class="wrap hero-grid">
-          <div class="hero-text">
-            <p class="tag-label" aria-hidden="true">&lt;body&gt;</p>
-            <h1>
-              João Gabriel<br />
-              Hermida Martins
-            </h1>
-            <p class="hero-role">
-              <span class="hero-role-caret" aria-hidden="true">&gt;</span>
-              Desenvolvedor Web em formação
-            </p>
-            <p class="hero-desc">
-              Estudo e construo interfaces com HTML5, CSS3 e JavaScript, com
-              passagens por C#, Java e bancos de dados relacionais. Gosto de
-              entender de verdade como as coisas funcionam por baixo do capô, um
-              projeto de cada vez.
-            </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#projetos">Ver projetos</a>
-              <a class="btn btn-ghost" href="#contato">Falar comigo</a>
-            </div>
+  <!-- ==========================================================
+       MAIN
+       ========================================================== -->
 
-            <ul class="hero-meta" aria-label="Links rápidos">
-              <li>
-                <a
-                  href="https://github.com/jg-sketch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fa-brands fa-github" aria-hidden="true"></i>
-                  github.com/jg-sketch
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-hermida-720898353/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
+  <main id="conteudo">
+
+    <!-- HERO -->
+
+    <section id="topo" class="hero">
+      <div class="wrap hero-grid">
+
+        <div class="hero-text">
+
+          <p class="tag-label" aria-hidden="true">
+            &lt;body&gt;
+          </p>
+
+          <h1>
+            João Gabriel<br />
+            Hermida Martins
+          </h1>
+
+          <p class="hero-role">
+            <span class="hero-role-caret" aria-hidden="true">&gt;</span>
+            Desenvolvedor Web em formação
+          </p>
+
+          <p class="hero-desc">
+            Estudo e construo interfaces com HTML5, CSS3 e JavaScript, com
+            passagens por C#, Java e bancos de dados relacionais. Gosto de
+            entender de verdade como as coisas funcionam por baixo do capô,
+            um projeto de cada vez.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projetos">
+              Ver projetos
+            </a>
+
+            <a class="btn btn-ghost" href="#contato">
+              Falar comigo
+            </a>
           </div>
 
-          <div class="hero-visual" aria-hidden="true">
-            <div class="code-card">
-              <div class="code-card-bar">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-                <span class="code-card-title">sobre-mim.js</span>
-              </div>
-              <pre
-                class="code-card-body"
-              ><code><span class="tok-kw">const</span> <span class="tok-var">dev</span> = {
+          <ul class="hero-meta" aria-label="Links rápidos">
+
+            <li>
+              <a
+                href="https://github.com/jg-sketch"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                github.com/jg-sketch
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-hermida-720898353/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                LinkedIn
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="hero-visual" aria-hidden="true">
+
+          <div class="code-card">
+
+            <div class="code-card-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+
+              <span class="code-card-title">
+                sobre-mim.js
+              </span>
+            </div>
+
+            <pre class="code-card-body"><code><span class="tok-kw">const</span> <span class="tok-var">dev</span> = {
   <span class="tok-key">nome</span>: <span class="tok-str">"João Gabriel"</span>,
   <span class="tok-key">cidade</span>: <span class="tok-str">"Niterói, RJ"</span>,
   <span class="tok-key">foco</span>: <span class="tok-str">"desenvolvimento web"</span>,
@@ -136,537 +1275,1295 @@
     <span class="tok-str">"CSS3"</span>,
     <span class="tok-str">"JavaScript"</span>
   ],
-  <span class="tok-key">tambemEstuda</span>: [<span class="tok-str">"C#"</span>, <span class="tok-str">"Java"</span>, <span class="tok-str">"SQL"</span>],
+  <span class="tok-key">tambemEstuda</span>: [
+    <span class="tok-str">"C#"</span>,
+    <span class="tok-str">"Java"</span>,
+    <span class="tok-str">"SQL"</span>
+  ],
   <span class="tok-key">aprendendo</span>: <span class="tok-bool">true</span>,
   <span class="tok-key">disponivel</span>: <span class="tok-bool">true</span>
 };</code></pre>
-            </div>
+
           </div>
         </div>
-      </section>
 
-      <section id="sobre" class="section">
-        <div class="wrap">
-          <p class="tag-label" aria-hidden="true">&lt;section id="sobre"&gt;</p>
-          <h2>Sobre mim</h2>
+      </div>
+    </section>
 
-          <div class="about-grid">
-            <p class="about-text">
-              Sou o João Gabriel, natural de Niterói e atualmente construindo
-              minha base como desenvolvedor web. Trabalho com HTML5 e CSS3 para
-              estruturar e estilizar páginas, e uso JavaScript para dar
-              interatividade a elas — incluindo manipulação do DOM, que é a
-              parte que mais gosto de praticar.
-            </p>
 
-            <p class="about-text">
-              Também estudo C#, Java, Python e bancos de dados relacionais
-              (SQLite e MySQL), o que me ajuda a entender lógica de programação
-              e estruturação de dados além do front-end.
-            </p>
+    <!-- SOBRE -->
 
-            <p class="about-text">
-              Prefiro aprender construindo: cada projeto deste portfólio nasceu
-              de uma necessidade real de praticar um conceito específico, do
-              zero, sem frameworks.
-            </p>
-          </div>
+    <section id="sobre" class="section">
 
-          <p class="tag-label tag-label-close" aria-hidden="true">
-            &lt;/section&gt;
+      <div class="wrap">
+
+        <p class="tag-label" aria-hidden="true">
+          &lt;section id="sobre"&gt;
+        </p>
+
+        <h2>Sobre mim</h2>
+
+        <div class="about-grid">
+
+          <p class="about-text">
+            Sou o João Gabriel, natural de Niterói e atualmente construindo
+            minha base como desenvolvedor web. Trabalho com HTML5 e CSS3 para
+            estruturar e estilizar páginas, e uso JavaScript para dar
+            interatividade a elas — incluindo manipulação do DOM, que é a
+            parte que mais gosto de praticar.
           </p>
+
+          <p class="about-text">
+            Também estudo C#, Java, Python e bancos de dados relacionais
+            (SQLite e MySQL), o que me ajuda a entender lógica de programação
+            e estruturação de dados além do front-end.
+          </p>
+
+          <p class="about-text">
+            Prefiro aprender construindo: cada projeto deste portfólio nasceu
+            de uma necessidade real de praticar um conceito específico, do
+            zero, sem frameworks.
+          </p>
+
         </div>
-      </section>
 
-      <section id="habilidades" class="section section-alt">
-        <div class="wrap">
-          <p class="tag-label" aria-hidden="true">
-            &lt;section id="habilidades"&gt;
-          </p>
-          <h2>Habilidades</h2>
-          <p class="section-intro">
-            Tecnologias que uso no dia a dia para estudar e construir projetos.
-          </p>
+        <p class="tag-label tag-label-close" aria-hidden="true">
+          &lt;/section&gt;
+        </p>
 
-          <div class="skills-columns">
-            <div class="skills-group">
-              <h3 class="skills-group-title">Front-end</h3>
-              <ul class="skills-grid">
-                <li class="skill-card skill-html">
-                  <div class="skill-card-head">
-                    <i class="fa-brands fa-html5" aria-hidden="true"></i>
-                    <span class="skill-name">HTML5</span>
-                  </div>
-                  <p class="skill-desc">
-                    Estruturação semântica e organização de páginas.
-                  </p>
-                  <span
-                    class="skill-level skill-level-high"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Principal
-                  </span>
-                </li>
+      </div>
+    </section>
 
-                <li class="skill-card skill-css">
-                  <div class="skill-card-head">
-                    <i class="fa-brands fa-css3-alt" aria-hidden="true"></i>
-                    <span class="skill-name">CSS3</span>
-                  </div>
-                  <p class="skill-desc">
-                    Layouts, responsividade, estilização e interfaces.
-                  </p>
-                  <span
-                    class="skill-level skill-level-high"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Principal
-                  </span>
-                </li>
 
-                <li class="skill-card skill-js">
-                  <div class="skill-card-head">
-                    <i class="fa-brands fa-js" aria-hidden="true"></i>
-                    <span class="skill-name">JavaScript</span>
-                  </div>
-                  <p class="skill-desc">
-                    Lógica, interatividade e manipulação do DOM.
-                  </p>
-                  <span
-                    class="skill-level skill-level-high"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Principal
-                  </span>
-                </li>
-              </ul>
-            </div>
+    <!-- HABILIDADES -->
 
-            <div class="skills-group">
-              <h3 class="skills-group-title">Programação</h3>
-              <ul class="skills-grid">
-                <li class="skill-card skill-csharp">
-                  <div class="skill-card-head">
-                    <i class="fa-solid fa-hashtag" aria-hidden="true"></i>
-                    <span class="skill-name">C#</span>
-                  </div>
-                  <p class="skill-desc">
-                    Conhecimento intermediário em programação e desenvolvimento
-                    de aplicações.
-                  </p>
-                  <span
-                    class="skill-level skill-level-mid"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Intermediário
-                  </span>
-                </li>
+    <section id="habilidades" class="section section-alt">
 
-                <div class="skills-group">
-                  <ul class="skills-grid">
-                    <li class="skill-card skill-python">
-                      <div class="skill-card-head">
-                        <i class="fa-brands fa-python" aria-hidden="true"></i>
-                        <span class="skill-name">Python</span>
-                      </div>
-                      <p class="skill-desc">
-                        Conhecimento em programação e desenvolvimento de
-                        aplicações.
-                      </p>
-                      <span
-                        class="skill-level skill-level-mid"
-                        title="Nível de conhecimento"
-                      >
-                        <span class="skill-level-bar"></span>
-                        Intermediário
-                      </span>
-                    </li>
-                  </ul>
+      <div class="wrap">
+
+        <p class="tag-label" aria-hidden="true">
+          &lt;section id="habilidades"&gt;
+        </p>
+
+        <h2>Habilidades</h2>
+
+        <p class="section-intro">
+          Tecnologias que uso no dia a dia para estudar e construir projetos.
+        </p>
+
+
+        <div class="skills-columns">
+
+          <!-- FRONT-END -->
+
+          <div class="skills-group">
+
+            <h3 class="skills-group-title">
+              Front-end
+            </h3>
+
+            <ul class="skills-grid">
+
+              <li class="skill-card skill-html">
+
+                <div class="skill-card-head">
+                  <i class="fa-brands fa-html5" aria-hidden="true"></i>
+                  <span class="skill-name">HTML5</span>
                 </div>
 
-                <li class="skill-card skill-java">
-                  <div class="skill-card-head">
-                    <i class="fa-brands fa-java" aria-hidden="true"></i>
-                    <span class="skill-name">Java</span>
-                  </div>
-                  <p class="skill-desc">
-                    Conhecimento intermediário em programação orientada a
-                    objetos.
-                  </p>
-                  <span
-                    class="skill-level skill-level-mid"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Intermediário
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="skills-group">
-              <h3 class="skills-group-title">Banco de dados</h3>
-              <ul class="skills-grid">
-                <li class="skill-card skill-sqlite">
-                  <div class="skill-card-head">
-                    <i class="fa-solid fa-database" aria-hidden="true"></i>
-                    <span class="skill-name">SQLite</span>
-                  </div>
-                  <p class="skill-desc">
-                    Conhecimento intermediário em bancos relacionais e consultas
-                    SQL.
-                  </p>
-                  <span
-                    class="skill-level skill-level-mid"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Intermediário
-                  </span>
-                </li>
-
-                <li class="skill-card skill-mysql">
-                  <div class="skill-card-head">
-                    <i class="fa-solid fa-server" aria-hidden="true"></i>
-                    <span class="skill-name">MySQL</span>
-                  </div>
-                  <p class="skill-desc">
-                    Conhecimento intermediário em bancos relacionais e SQL.
-                  </p>
-                  <span
-                    class="skill-level skill-level-mid"
-                    title="Nível de conhecimento"
-                  >
-                    <span class="skill-level-bar"></span>
-                    Intermediário
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="tag-label tag-label-close" aria-hidden="true">
-            &lt;/section&gt;
-          </p>
-        </div>
-      </section>
-
-      <section id="projetos" class="section">
-        <div class="wrap">
-          <p class="tag-label" aria-hidden="true">
-            &lt;section id="projetos"&gt;
-          </p>
-          <h2>Projetos</h2>
-          <p class="section-intro">
-            Projetos que desenvolvi para praticar programação, lógica e
-            desenvolvimento web.
-          </p>
-
-          <h3 class="projects-subtitle">Projetos web</h3>
-          <div class="projects-grid">
-            <article class="project-card">
-              <div class="project-card-top">
-                <i class="fa-solid fa-calculator" aria-hidden="true"></i>
-              </div>
-
-              <h4>Calculadora Simples</h4>
-
-              <p>
-                Calculadora básica construída com HTML e JavaScript puro,
-                praticando manipulação de eventos e atualização do DOM.
-              </p>
-
-              <ul class="project-tags">
-                <li>HTML</li>
-                <li>JavaScript</li>
-              </ul>
-
-              <a
-                class="btn btn-outline"
-                href="https://ld4wvh.csb.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver projeto
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-              </a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-top">
-                <i class="fa-solid fa-weight-scale" aria-hidden="true"></i>
-              </div>
-
-              <h4>Calculadora de IMC</h4>
-
-              <p>
-                Aplicação que calcula o Índice de Massa Corporal a partir de
-                peso e altura informados pelo usuário, exibindo o resultado
-                dinamicamente na página.
-              </p>
-
-              <ul class="project-tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-              </ul>
-
-              <a
-                class="btn btn-outline"
-                href="https://dct6qr.csb.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver projeto
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-              </a>
-            </article>
-          </div>
-
-          <div class="github-showcase">
-            <div class="github-showcase-head">
-              <div>
-                <h3 class="projects-subtitle">
-                  <i class="fa-brands fa-github" aria-hidden="true"></i>
-                  Repositórios em destaque
-                </h3>
-                <p class="section-intro section-intro-tight">
-                  Dados carregados diretamente da API pública do GitHub.
+                <p class="skill-desc">
+                  Estruturação semântica e organização de páginas.
                 </p>
-              </div>
 
-              <a
-                class="btn btn-ghost"
-                href="https://github.com/jg-sketch"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver todos os repositórios
-                <i
-                  class="fa-solid fa-arrow-up-right-from-square"
-                  aria-hidden="true"
-                ></i>
-              </a>
-            </div>
+                <span
+                  class="skill-level skill-level-high"
+                  title="Nível de conhecimento"
+                >
+                  <span class="skill-level-bar"></span>
+                  Principal
+                </span>
 
-            <div class="repo-grid" id="repo-grid">
-              <!-- Repositório 1: preenchido dinamicamente via API, com fallback estático -->
-              <article
-                class="repo-card"
-                data-repo="jg-sketch/Projeto-IMDB-Top-250-Infnet"
-                data-fallback-desc="Projeto acadêmico desenvolvido para o Infnet, explorando dados do ranking Top 250 do IMDB."
-                data-fallback-lang="—"
-              >
-                <div class="repo-card-head">
-                  <i
-                    class="fa-solid fa-code-branch repo-icon"
-                    aria-hidden="true"
-                  ></i>
-                  <span class="repo-badge">Repositório GitHub</span>
+              </li>
+
+
+              <li class="skill-card skill-css">
+
+                <div class="skill-card-head">
+                  <i class="fa-brands fa-css3-alt" aria-hidden="true"></i>
+                  <span class="skill-name">CSS3</span>
                 </div>
 
-                <h4 class="repo-name">Projeto IMDB Top 250 — Infnet</h4>
-                <p class="repo-desc">
-                  Projeto acadêmico desenvolvido para o Infnet, explorando dados
-                  do ranking Top 250 do IMDB.
+                <p class="skill-desc">
+                  Layouts, responsividade, estilização e interfaces.
                 </p>
 
-                <ul class="repo-stats" aria-label="Estatísticas do repositório">
-                  <li class="repo-lang">
-                    <span class="repo-lang-dot" aria-hidden="true"></span>
-                    <span class="repo-lang-name">—</span>
-                  </li>
-                  <li>
-                    <i class="fa-regular fa-star" aria-hidden="true"></i>
-                    <span class="repo-stars">—</span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-code-fork" aria-hidden="true"></i>
-                    <span class="repo-forks">—</span>
-                  </li>
-                  <li class="repo-updated">
-                    <i class="fa-regular fa-clock" aria-hidden="true"></i>
-                    <span class="repo-updated-text"
-                      >Atualizado recentemente</span
-                    >
-                  </li>
-                </ul>
-
-                <a
-                  class="btn btn-outline"
-                  href="https://github.com/jg-sketch/Projeto-IMDB-Top-250-Infnet"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <span
+                  class="skill-level skill-level-high"
+                  title="Nível de conhecimento"
                 >
-                  Ver no GitHub
-                  <i class="fa-brands fa-github" aria-hidden="true"></i>
-                </a>
-              </article>
+                  <span class="skill-level-bar"></span>
+                  Principal
+                </span>
 
-              <!-- Repositório 2: preenchido dinamicamente via API, com fallback estático -->
-              <article
-                class="repo-card"
-                data-repo="jg-sketch/ConsolesEJogosJoaoGabApp"
-                data-fallback-desc="Aplicação sobre consoles e jogos, praticando estruturação de dados e lógica de programação."
-                data-fallback-lang="—"
-              >
-                <div class="repo-card-head">
-                  <i
-                    class="fa-solid fa-code-branch repo-icon"
-                    aria-hidden="true"
-                  ></i>
-                  <span class="repo-badge">Repositório GitHub</span>
+              </li>
+
+
+              <li class="skill-card skill-js">
+
+                <div class="skill-card-head">
+                  <i class="fa-brands fa-js" aria-hidden="true"></i>
+                  <span class="skill-name">JavaScript</span>
                 </div>
 
-                <h4 class="repo-name">Consoles e Jogos — JoãoGabApp</h4>
-                <p class="repo-desc">
-                  Aplicação sobre consoles e jogos, praticando estruturação de
-                  dados e lógica de programação.
+                <p class="skill-desc">
+                  Lógica, interatividade e manipulação do DOM.
                 </p>
 
-                <ul class="repo-stats" aria-label="Estatísticas do repositório">
-                  <li class="repo-lang">
-                    <span class="repo-lang-dot" aria-hidden="true"></span>
-                    <span class="repo-lang-name">—</span>
-                  </li>
-                  <li>
-                    <i class="fa-regular fa-star" aria-hidden="true"></i>
-                    <span class="repo-stars">—</span>
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-code-fork" aria-hidden="true"></i>
-                    <span class="repo-forks">—</span>
-                  </li>
-                  <li class="repo-updated">
-                    <i class="fa-regular fa-clock" aria-hidden="true"></i>
-                    <span class="repo-updated-text"
-                      >Atualizado recentemente</span
-                    >
-                  </li>
-                </ul>
-
-                <a
-                  class="btn btn-outline"
-                  href="https://github.com/jg-sketch/ConsolesEJogosJoaoGabApp"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <span
+                  class="skill-level skill-level-high"
+                  title="Nível de conhecimento"
                 >
-                  Ver no GitHub
-                  <i class="fa-brands fa-github" aria-hidden="true"></i>
-                </a>
-              </article>
-            </div>
+                  <span class="skill-level-bar"></span>
+                  Principal
+                </span>
+
+              </li>
+
+            </ul>
+
           </div>
 
-          <p class="tag-label tag-label-close" aria-hidden="true">
-            &lt;/section&gt;
-          </p>
-        </div>
-      </section>
 
-      <section id="contato" class="section section-alt">
-        <div class="wrap">
-          <p class="tag-label" aria-hidden="true">
-            &lt;section id="contato"&gt;
-          </p>
-          <h2>Contato</h2>
+          <!-- PROGRAMAÇÃO -->
 
-          <p class="contact-intro">
-            Estou aberto a trocar ideias, receber feedback ou conversar sobre
-            oportunidades. É só chamar por um dos canais abaixo.
-          </p>
+          <div class="skills-group">
 
-          <div class="contact-links">
-            <a
-              class="contact-card"
-              href="mailto:joao.gabriel.hermida@gmail.com"
-            >
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <span>
-                <span class="contact-label">E-mail</span>
-                <span class="contact-value"
-                  >joao.gabriel.hermida@gmail.com</span
+            <h3 class="skills-group-title">
+              Programação
+            </h3>
+
+            <ul class="skills-grid">
+
+              <li class="skill-card skill-csharp">
+
+                <div class="skill-card-head">
+                  <i class="fa-solid fa-hashtag" aria-hidden="true"></i>
+                  <span class="skill-name">C#</span>
+                </div>
+
+                <p class="skill-desc">
+                  Conhecimento intermediário em programação e desenvolvimento
+                  de aplicações.
+                </p>
+
+                <span
+                  class="skill-level skill-level-mid"
+                  title="Nível de conhecimento"
                 >
-              </span>
-            </a>
+                  <span class="skill-level-bar"></span>
+                  Intermediário
+                </span>
+
+              </li>
+
+
+              <li class="skill-card skill-python">
+
+                <div class="skill-card-head">
+                  <i class="fa-brands fa-python" aria-hidden="true"></i>
+                  <span class="skill-name">Python</span>
+                </div>
+
+                <p class="skill-desc">
+                  Conhecimento em programação e desenvolvimento de aplicações.
+                </p>
+
+                <span
+                  class="skill-level skill-level-mid"
+                  title="Nível de conhecimento"
+                >
+                  <span class="skill-level-bar"></span>
+                  Intermediário
+                </span>
+
+              </li>
+
+
+              <li class="skill-card skill-java">
+
+                <div class="skill-card-head">
+                  <i class="fa-brands fa-java" aria-hidden="true"></i>
+                  <span class="skill-name">Java</span>
+                </div>
+
+                <p class="skill-desc">
+                  Conhecimento intermediário em programação orientada a
+                  objetos.
+                </p>
+
+                <span
+                  class="skill-level skill-level-mid"
+                  title="Nível de conhecimento"
+                >
+                  <span class="skill-level-bar"></span>
+                  Intermediário
+                </span>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <!-- BANCO DE DADOS -->
+
+          <div class="skills-group">
+
+            <h3 class="skills-group-title">
+              Banco de dados
+            </h3>
+
+            <ul class="skills-grid">
+
+              <li class="skill-card skill-sqlite">
+
+                <div class="skill-card-head">
+                  <i class="fa-solid fa-database" aria-hidden="true"></i>
+                  <span class="skill-name">SQLite</span>
+                </div>
+
+                <p class="skill-desc">
+                  Conhecimento intermediário em bancos relacionais e consultas
+                  SQL.
+                </p>
+
+                <span
+                  class="skill-level skill-level-mid"
+                  title="Nível de conhecimento"
+                >
+                  <span class="skill-level-bar"></span>
+                  Intermediário
+                </span>
+
+              </li>
+
+
+              <li class="skill-card skill-mysql">
+
+                <div class="skill-card-head">
+                  <i class="fa-solid fa-server" aria-hidden="true"></i>
+                  <span class="skill-name">MySQL</span>
+                </div>
+
+                <p class="skill-desc">
+                  Conhecimento intermediário em bancos relacionais e SQL.
+                </p>
+
+                <span
+                  class="skill-level skill-level-mid"
+                  title="Nível de conhecimento"
+                >
+                  <span class="skill-level-bar"></span>
+                  Intermediário
+                </span>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <p class="tag-label tag-label-close" aria-hidden="true">
+          &lt;/section&gt;
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- PROJETOS -->
+
+    <section id="projetos" class="section">
+
+      <div class="wrap">
+
+        <p class="tag-label" aria-hidden="true">
+          &lt;section id="projetos"&gt;
+        </p>
+
+        <h2>Projetos</h2>
+
+        <p class="section-intro">
+          Projetos que desenvolvi para praticar programação, lógica e
+          desenvolvimento web.
+        </p>
+
+
+        <h3 class="projects-subtitle">
+          Projetos web
+        </h3>
+
+
+        <div class="projects-grid">
+
+          <!-- PROJETO CALCULADORA -->
+
+          <article class="project-card">
+
+            <div class="project-card-top">
+              <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+            </div>
+
+            <h4>Calculadora Simples</h4>
+
+            <p>
+              Calculadora básica construída com HTML e JavaScript puro,
+              praticando manipulação de eventos e atualização do DOM.
+            </p>
+
+            <ul class="project-tags">
+              <li>HTML</li>
+              <li>JavaScript</li>
+            </ul>
 
             <a
-              class="contact-card"
-              href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-hermida-720898353/"
+              class="btn btn-outline"
+              href="https://ld4wvh.csb.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
-              <span>
-                <span class="contact-label">LinkedIn</span>
-                <span class="contact-value">/joão-gabriel-hermida</span>
-              </span>
+              Ver projeto
+              <i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
             </a>
 
+          </article>
+
+
+          <!-- PROJETO IMC -->
+
+          <article class="project-card">
+
+            <div class="project-card-top">
+              <i class="fa-solid fa-weight-scale" aria-hidden="true"></i>
+            </div>
+
+            <h4>Calculadora de IMC</h4>
+
+            <p>
+              Aplicação que calcula o Índice de Massa Corporal a partir de
+              peso e altura informados pelo usuário, exibindo o resultado
+              dinamicamente na página.
+            </p>
+
+            <ul class="project-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+
             <a
-              class="contact-card"
+              class="btn btn-outline"
+              href="https://dct6qr.csb.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver projeto
+              <i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
+            </a>
+
+          </article>
+
+        </div>
+
+
+        <!-- GITHUB -->
+
+        <div class="github-showcase">
+
+          <div class="github-showcase-head">
+
+            <div>
+
+              <h3 class="projects-subtitle">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                Repositórios em destaque
+              </h3>
+
+              <p class="section-intro section-intro-tight">
+                Dados carregados diretamente da API pública do GitHub.
+              </p>
+
+            </div>
+
+
+            <a
+              class="btn btn-ghost"
               href="https://github.com/jg-sketch"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
-              <span>
-                <span class="contact-label">GitHub</span>
-                <span class="contact-value">/jg-sketch</span>
-              </span>
+              Ver todos os repositórios
+
+              <i
+                class="fa-solid fa-arrow-up-right-from-square"
+                aria-hidden="true"
+              ></i>
             </a>
+
           </div>
 
-          <p class="tag-label tag-label-close" aria-hidden="true">
-            &lt;/section&gt;
-          </p>
-        </div>
-      </section>
-    </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <p>
-          &copy; <span id="year"></span> João Gabriel Hermida Martins. Todos os
-          direitos reservados.
+          <div class="repo-grid" id="repo-grid">
+
+            <!-- REPOSITÓRIO 1 -->
+
+            <article
+              class="repo-card"
+              data-repo="jg-sketch/Projeto-IMDB-Top-250-Infnet"
+              data-fallback-desc="Projeto acadêmico desenvolvido para o Infnet, explorando dados do ranking Top 250 do IMDB."
+              data-fallback-lang="—"
+            >
+
+              <div class="repo-card-head">
+
+                <i
+                  class="fa-solid fa-code-branch repo-icon"
+                  aria-hidden="true"
+                ></i>
+
+                <span class="repo-badge">
+                  Repositório GitHub
+                </span>
+
+              </div>
+
+              <h4 class="repo-name">
+                Projeto IMDB Top 250 — Infnet
+              </h4>
+
+              <p class="repo-desc">
+                Projeto acadêmico desenvolvido para o Infnet, explorando dados
+                do ranking Top 250 do IMDB.
+              </p>
+
+              <ul
+                class="repo-stats"
+                aria-label="Estatísticas do repositório"
+              >
+
+                <li class="repo-lang">
+                  <span
+                    class="repo-lang-dot"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="repo-lang-name">—</span>
+                </li>
+
+                <li>
+                  <i
+                    class="fa-regular fa-star"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-stars">—</span>
+                </li>
+
+                <li>
+                  <i
+                    class="fa-solid fa-code-fork"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-forks">—</span>
+                </li>
+
+                <li class="repo-updated">
+                  <i
+                    class="fa-regular fa-clock"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-updated-text">
+                    Atualizado recentemente
+                  </span>
+                </li>
+
+              </ul>
+
+              <a
+                class="btn btn-outline"
+                href="https://github.com/jg-sketch/Projeto-IMDB-Top-250-Infnet"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver no GitHub
+
+                <i
+                  class="fa-brands fa-github"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+            </article>
+
+
+            <!-- REPOSITÓRIO 2 -->
+
+            <article
+              class="repo-card"
+              data-repo="jg-sketch/ConsolesEJogosJoaoGabApp"
+              data-fallback-desc="Aplicação sobre consoles e jogos, praticando estruturação de dados e lógica de programação."
+              data-fallback-lang="—"
+            >
+
+              <div class="repo-card-head">
+
+                <i
+                  class="fa-solid fa-code-branch repo-icon"
+                  aria-hidden="true"
+                ></i>
+
+                <span class="repo-badge">
+                  Repositório GitHub
+                </span>
+
+              </div>
+
+              <h4 class="repo-name">
+                Consoles e Jogos — JoãoGabApp
+              </h4>
+
+              <p class="repo-desc">
+                Aplicação sobre consoles e jogos, praticando estruturação de
+                dados e lógica de programação.
+              </p>
+
+              <ul
+                class="repo-stats"
+                aria-label="Estatísticas do repositório"
+              >
+
+                <li class="repo-lang">
+
+                  <span
+                    class="repo-lang-dot"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span class="repo-lang-name">—</span>
+
+                </li>
+
+                <li>
+                  <i
+                    class="fa-regular fa-star"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-stars">—</span>
+                </li>
+
+                <li>
+                  <i
+                    class="fa-solid fa-code-fork"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-forks">—</span>
+                </li>
+
+                <li class="repo-updated">
+
+                  <i
+                    class="fa-regular fa-clock"
+                    aria-hidden="true"
+                  ></i>
+
+                  <span class="repo-updated-text">
+                    Atualizado recentemente
+                  </span>
+
+                </li>
+
+              </ul>
+
+              <a
+                class="btn btn-outline"
+                href="https://github.com/jg-sketch/ConsolesEJogosJoaoGabApp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver no GitHub
+
+                <i
+                  class="fa-brands fa-github"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+            </article>
+
+          </div>
+        </div>
+
+
+        <p class="tag-label tag-label-close" aria-hidden="true">
+          &lt;/section&gt;
         </p>
 
-        <div class="footer-links">
+      </div>
+    </section>
+
+
+    <!-- CONTATO -->
+
+    <section id="contato" class="section section-alt">
+
+      <div class="wrap">
+
+        <p class="tag-label" aria-hidden="true">
+          &lt;section id="contato"&gt;
+        </p>
+
+        <h2>Contato</h2>
+
+        <p class="contact-intro">
+          Estou aberto a trocar ideias, receber feedback ou conversar sobre
+          oportunidades. É só chamar por um dos canais abaixo.
+        </p>
+
+
+        <div class="contact-links">
+
+          <!-- EMAIL -->
+
           <a
-            href="https://github.com/jg-sketch"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
+            class="contact-card"
+            href="mailto:joao.gabriel.hermida@gmail.com"
           >
-            <i class="fa-brands fa-github" aria-hidden="true"></i>
+
+            <i
+              class="fa-solid fa-envelope"
+              aria-hidden="true"
+            ></i>
+
+            <span>
+
+              <span class="contact-label">
+                E-mail
+              </span>
+
+              <span class="contact-value">
+                joao.gabriel.hermida@gmail.com
+              </span>
+
+            </span>
+
           </a>
+
+
+          <!-- LINKEDIN -->
+
           <a
+            class="contact-card"
             href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-hermida-720898353/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
           >
-            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+
+            <i
+              class="fa-brands fa-linkedin"
+              aria-hidden="true"
+            ></i>
+
+            <span>
+
+              <span class="contact-label">
+                LinkedIn
+              </span>
+
+              <span class="contact-value">
+                /joão-gabriel-hermida
+              </span>
+
+            </span>
+
           </a>
-          <a href="mailto:joao.gabriel.hermida@gmail.com" aria-label="E-mail">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+
+
+          <!-- GITHUB -->
+
+          <a
+            class="contact-card"
+            href="https://github.com/jg-sketch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <i
+              class="fa-brands fa-github"
+              aria-hidden="true"
+            ></i>
+
+            <span>
+
+              <span class="contact-label">
+                GitHub
+              </span>
+
+              <span class="contact-value">
+                /jg-sketch
+              </span>
+
+            </span>
+
           </a>
+
         </div>
 
-        <p class="footer-tag">Feito com HTML, CSS e JavaScript.</p>
-      </div>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+        <p class="tag-label tag-label-close" aria-hidden="true">
+          &lt;/section&gt;
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="wrap footer-inner">
+
+      <p>
+        &copy;
+        <span id="year"></span>
+        João Gabriel Hermida Martins.
+        Todos os direitos reservados.
+      </p>
+
+
+      <div class="footer-links">
+
+        <a
+          href="https://github.com/jg-sketch"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
+          <i
+            class="fa-brands fa-github"
+            aria-hidden="true"
+          ></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/jo%C3%A3o-gabriel-hermida-720898353/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <i
+            class="fa-brands fa-linkedin"
+            aria-hidden="true"
+          ></i>
+        </a>
+
+        <a
+          href="mailto:joao.gabriel.hermida@gmail.com"
+          aria-label="E-mail"
+        >
+          <i
+            class="fa-solid fa-envelope"
+            aria-hidden="true"
+          ></i>
+        </a>
+
+      </div>
+
+
+      <p class="footer-tag">
+        Feito com HTML, CSS e JavaScript.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ==========================================================
+       JAVASCRIPT
+       ========================================================== -->
+
+  <script>
+    // ============================================================
+    // Dark mode
+    // ============================================================
+
+    const THEME_KEY = "portfolio-theme";
+
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = themeToggle.querySelector("i");
+
+
+    function getPreferredTheme() {
+      const saved = localStorage.getItem(THEME_KEY);
+
+      if (saved === "light" || saved === "dark") {
+        return saved;
+      }
+
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+
+    function applyTheme(theme) {
+
+      if (theme === "dark") {
+
+        root.setAttribute("data-theme", "dark");
+
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+
+        themeToggle.setAttribute("aria-pressed", "true");
+        themeToggle.setAttribute(
+          "aria-label",
+          "Ativar modo claro"
+        );
+
+      } else {
+
+        root.removeAttribute("data-theme");
+
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+
+        themeToggle.setAttribute("aria-pressed", "false");
+        themeToggle.setAttribute(
+          "aria-label",
+          "Ativar modo escuro"
+        );
+
+      }
+    }
+
+
+    let currentTheme = getPreferredTheme();
+
+    applyTheme(currentTheme);
+
+
+    themeToggle.addEventListener("click", () => {
+
+      currentTheme =
+        currentTheme === "dark"
+          ? "light"
+          : "dark";
+
+      applyTheme(currentTheme);
+
+      localStorage.setItem(
+        THEME_KEY,
+        currentTheme
+      );
+
+    });
+
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+
+        if (localStorage.getItem(THEME_KEY)) {
+          return;
+        }
+
+        currentTheme = event.matches
+          ? "dark"
+          : "light";
+
+        applyTheme(currentTheme);
+
+      });
+
+
+    // ============================================================
+    // Mobile navigation
+    // ============================================================
+
+    const navToggle =
+      document.getElementById("nav-toggle");
+
+    const siteNav =
+      document.querySelector(".site-nav");
+
+
+    navToggle.addEventListener("click", () => {
+
+      const isOpen =
+        siteNav.classList.toggle("is-open");
+
+      navToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      navToggle.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Fechar menu de navegação"
+          : "Abrir menu de navegação"
+      );
+
+    });
+
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        siteNav.classList.remove("is-open");
+
+        navToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        navToggle.setAttribute(
+          "aria-label",
+          "Abrir menu de navegação"
+        );
+
+      });
+
+    });
+
+
+    // ============================================================
+    // Footer year
+    // ============================================================
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // ============================================================
+    // Scroll reveal
+    // ============================================================
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+
+    const revealTargets =
+      document.querySelectorAll(
+        ".section, .hero-text, .hero-visual"
+      );
+
+
+    if (
+      prefersReducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+
+      revealTargets.forEach((el) => {
+
+        el.classList.add(
+          "reveal",
+          "is-visible"
+        );
+
+      });
+
+    } else {
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach((entry) => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "is-visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+
+      revealTargets.forEach((el) => {
+
+        el.classList.add("reveal");
+
+        observer.observe(el);
+
+      });
+
+    }
+
+
+    // ============================================================
+    // GitHub repositories showcase
+    // ============================================================
+
+    const relativeTimeFormatter =
+      new Intl.RelativeTimeFormat(
+        "pt-BR",
+        {
+          numeric: "auto"
+        }
+      );
+
+
+    function formatRelativeDate(isoDate) {
+
+      const updatedAt =
+        new Date(isoDate);
+
+      const diffInDays =
+        Math.round(
+          (
+            updatedAt.getTime() -
+            Date.now()
+          ) /
+          (1000 * 60 * 60 * 24)
+        );
+
+
+      if (Math.abs(diffInDays) < 30) {
+
+        return relativeTimeFormatter.format(
+          diffInDays,
+          "day"
+        );
+
+      }
+
+
+      const diffInMonths =
+        Math.round(
+          diffInDays / 30
+        );
+
+
+      if (Math.abs(diffInMonths) < 12) {
+
+        return relativeTimeFormatter.format(
+          diffInMonths,
+          "month"
+        );
+
+      }
+
+
+      const diffInYears =
+        Math.round(
+          diffInDays / 365
+        );
+
+
+      return relativeTimeFormatter.format(
+        diffInYears,
+        "year"
+      );
+
+    }
+
+
+    function formatCount(value) {
+
+      return new Intl.NumberFormat(
+        "pt-BR",
+        {
+          notation: "compact"
+        }
+      ).format(value);
+
+    }
+
+
+    async function hydrateRepoCard(card) {
+
+      const repoPath =
+        card.dataset.repo;
+
+      if (!repoPath) {
+        return;
+      }
+
+
+      card.classList.add(
+        "is-loading"
+      );
+
+
+      try {
+
+        const response =
+          await fetch(
+            `https://api.github.com/repos/${repoPath}`,
+            {
+              headers: {
+                Accept:
+                  "application/vnd.github+json"
+              }
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            `GitHub API respondeu ${response.status}`
+          );
+
+        }
+
+
+        const repo =
+          await response.json();
+
+
+        const descEl =
+          card.querySelector(
+            ".repo-desc"
+          );
+
+        const langEl =
+          card.querySelector(
+            ".repo-lang-name"
+          );
+
+        const starsEl =
+          card.querySelector(
+            ".repo-stars"
+          );
+
+        const forksEl =
+          card.querySelector(
+            ".repo-forks"
+          );
+
+        const updatedEl =
+          card.querySelector(
+            ".repo-updated-text"
+          );
+
+
+        if (
+          descEl &&
+          repo.description
+        ) {
+
+          descEl.textContent =
+            repo.description;
+
+        }
+
+
+        if (langEl) {
+
+          langEl.textContent =
+            repo.language ||
+            card.dataset.fallbackLang ||
+            "—";
+
+        }
+
+
+        if (starsEl) {
+
+          starsEl.textContent =
+            formatCount(
+              repo.stargazers_count ?? 0
+            );
+
+        }
+
+
+        if (forksEl) {
+
+          forksEl.textContent =
+            formatCount(
+              repo.forks_count ?? 0
+            );
+
+        }
+
+
+        if (
+          updatedEl &&
+          repo.pushed_at
+        ) {
+
+          updatedEl.textContent =
+            `Atualizado ${formatRelativeDate(
+              repo.pushed_at
+            )}`;
+
+        }
+
+      } catch (error) {
+
+        console.warn(
+          `Não foi possível carregar dados ao vivo de ${repoPath}:`,
+          error
+        );
+
+      } finally {
+
+        card.classList.remove(
+          "is-loading"
+        );
+
+      }
+
+    }
+
+
+    document
+      .querySelectorAll(
+        ".repo-card[data-repo]"
+      )
+      .forEach(
+        hydrateRepoCard
+      );
+  </script>
+
+</body>
 </html>
